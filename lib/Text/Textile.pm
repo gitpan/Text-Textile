@@ -1,8 +1,8 @@
 package Text::Textile;
-our $VERSION = 0.6;
+our $VERSION = 0.7;
 
 use strict;
-use warnings::register;
+use warnings;
 
 use Exporter;
 @Text::Textile::ISA = qw(Exporter);
@@ -573,7 +573,7 @@ sub format_tag {
         if ($Have_Entities && $self->{char_encoding}) {
             $html = HTML::Entities::encode_entities($html);
         } else {
-            $self->encode_html_basic($html, $can_double_encode);
+            $html = $self->encode_html_basic($html, $can_double_encode);
         }
         $html;
     }

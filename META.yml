@@ -1,15 +1,13 @@
 --- #YAML:1.0
 name: Text-Textile
-version: 0.6
+version: 0.7
+author: ~
+abstract: ~
 license: unknown
-distribution_type: module
 requires:
   perl: 5.6.0
-recommends: {}
-build_requires: {}
-conflicts: {}
 provides:
   Text::Textile:
     file: lib/Text/Textile.pm
-    version: 0.6
-generated_by: Module::Build version 0.21
+    version: 0.7
+generated_by: Module::Build version 0.25

@@ -1,3 +1,4 @@
 {
-          'Text-Textile-0.6' => 1
+          'Text-Textile-0.7' => 1,
+          'blib' => 1
         }

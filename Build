@@ -1,33 +1,39 @@
-#! /opt/perl/bin/perl
+#! /Users/tomi/Library/Perl58/bin/perl
 
 use strict;
+use Cwd;
+use File::Spec;
 
 BEGIN {
   $^W = 1;  # Use warnings
-  my $start_dir = '/Users/tomi/Projects/Text-Textile';
-  chdir($start_dir) or die "Cannot chdir to $start_dir: $!";
+  my $curdir = File::Spec->canonpath( Cwd::cwd() );
+  unless ($curdir eq '/Users/tomi/svn/Projects/Text-Textile') {
+    die ('This script must be run from /Users/tomi/svn/Projects/Text-Textile, not '."$curdir\n".
+	 "Please re-run the Build.PL script here.\n");
+  }
   @INC = 
     (
-     '/opt/perl/lib/5.8.1/darwin-2level',
-     '/opt/perl/lib/5.8.1',
-     '/opt/perl/lib/site_perl/5.8.1/darwin-2level',
-     '/opt/perl/lib/site_perl/5.8.1',
-     '/opt/perl/lib/site_perl',
-     '/Users/tomi/Projects/Text-Textile'
+     '/sw/lib/perl5',
+     '/sw/lib/perl5/darwin',
+     '/Users/tomi/Library/Perl58/lib/perl5/5.8.5/darwin-thread-multi-2level',
+     '/Users/tomi/Library/Perl58/lib/perl5/5.8.5',
+     '/Users/tomi/Library/Perl58/lib/perl5/site_perl/5.8.5/darwin-thread-multi-2level',
+     '/Users/tomi/Library/Perl58/lib/perl5/site_perl/5.8.5',
+     '/Users/tomi/Library/Perl58/lib/perl5/site_perl',
+     '/Users/tomi/svn/Projects/Text-Textile'
     );
 }
 
 use Module::Build;
 
 if (-e 'Build.PL' and not Module::Build->up_to_date("Build.PL", $0)) {
-   warn "Warning: Build.PL has been altered.  You may need to run 'perl Build.PL' again.
-";
+   warn "Warning: Build.PL has been altered.  You may need to run 'perl Build.PL' again.\n";
 }
 
 # This should have just enough arguments to be able to bootstrap the rest.
 my $build = Module::Build->resume (
   properties => {
-    config_dir => '/Users/tomi/Projects/Text-Textile/_build',
+    config_dir => '/Users/tomi/svn/Projects/Text-Textile/_build',
   },
 );
 

@@ -1,7 +1,7 @@
-use Test::Simple tests=>1;
+use warnings;
+use strict;
+use Test::More tests=>1;
 use Text::Textile qw(textile);
-
-sub debug { $ENV{DEBUG} && print STDERR @_ }
 
 my $source = <<SOURCE;
 start paragraph
@@ -31,10 +31,5 @@ my $expected = <<EXPECTED;
 <p>a http://bare.url.here. and an email\@address.com</p>
 EXPECTED
 
-if ($dest ne $expected) {
-    debug("dest\n====\n$dest\n=======\n");
-    debug("expected\n========\n$expected\n=======\n");
-}
-
-ok($dest eq $expected);
+is($dest, $expected);
 
