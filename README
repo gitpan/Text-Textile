@@ -1,11 +1,10 @@
-Text::Textile
+For the original readme file that came with the MT-Textile plugin, see
+README.textile in the root of this distribution.
 
-Some brief notes.
+I claim no credit for either coming up with the Textile formatting language, or
+for this perl implementation of it (although I have made some small perl cleanups that I felt helped the code), I've only packaged it. All credit for Textile should go to Dean Allen and/or Brad Choate, and all blame for problems to myself.
 
-Text::Textile implements the Textile formatting language as outlined at
-http://www.textism.com/tools/textile/. The actual code was written by Brad
-Choate (http://www.bradchoate.com/) for his Movable Type plugin
-(http://www.bradchoate.com/past/mttextile.php). I've stolen the code, thrown
-away most of the wrapper, and added an exportable function. Not complex
-stuff.
+Thanks for the liberal license, guys, so I could release this code.
 
+Tom Insam
+tom@jerakeen.org

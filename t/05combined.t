@@ -12,24 +12,29 @@ another paragraph
 * more things in the list
 
 a http://bare.url.here. and an email\@address.com
+
 SOURCE
 
-my $dest = textile($source);
+my $dest = textile($source)."\n";
 
 my $expected = <<EXPECTED;
 <p>start paragraph</p>
 
 <p>another paragraph</p>
 
-<ul><li>list of things with <a href="http://www.jerakeen.org">urls</a> in</li>
+
+<ul>
+<li>list of things with <a href="http://www.jerakeen.org">urls</a> in</li>
 <li>more things in the list</li>
 </ul>
 
 <p>a http://bare.url.here. and an email\@address.com</p>
 EXPECTED
 
-debug("dest\n====\n$dest\n=======\n");
-debug("expected\n========\n$expected\n=======\n");
+if ($dest ne $expected) {
+    debug("dest\n====\n$dest\n=======\n");
+    debug("expected\n========\n$expected\n=======\n");
+}
 
-ok($dest."\n" eq $expected);
+ok($dest eq $expected);
 

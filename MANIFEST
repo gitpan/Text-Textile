@@ -1,8 +1,16 @@
-Changes
+_build/build_params
+_build/cleanup
+_build/notes
+_build/prereqs
+Build
+Build.PL
+docs/mtmanual_textile.html
+lib/Text/Textile.pm
 Makefile.PL
-MANIFEST
-Textile.pm
+MANIFEST			This list of files
+META.yml
 README
+README.textile
 t/01compile.t
 t/02paragraph.t
 t/03url.t

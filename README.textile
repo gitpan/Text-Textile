@@ -1,0 +1,206 @@
+Textile Text Formatter
+A Plugin for Movable Type
+
+Release 2.0b
+March 27, 2003
+
+
+From Brad Choate
+http://www.bradchoate.com/
+Copyright (c) 2003, Brad Choate
+
+
+===========================================================================
+
+INSTALLATION
+
+To install, you will need to add the following files to your Movable
+Type installation. The directory locations and file names are:
+
+  * (mt home)/plugins/textile.pl
+  * (mt home)/extlib/bradchoate/textile.pm
+  * (mt home)/extlib/Text/Textile.pm
+
+Refer to the Movable Type documentation for more information regarding
+plugins.
+
+You may also consider installing two additional plugins that MT-Textile
+is compatible with:
+
+  * SmartyPants: http://www.daringfireball.net/projects/smartypants/
+    Version 1.1 or later. This plugin will cause MT-Textile to apply
+    "smart" quotes (typographic quotes or 'curly' quotes) to your
+    text.
+
+  * CodeBeautifier: http://voisen.org/projects/
+    Version 0.4 or later. This plugin will allow language specific
+    <code> and/or <blockcode> tags. Use the "language" attribute for
+    these tags to invoke one of the following formatters: "perl" for
+    Perl, "php" for PHP, "java" for Java, "as" or "actionscript" for
+    ActionScript, "scheme" for Scheme.
+
+
+===========================================================================
+
+DESCRIPTION
+
+This plugin adds an additional 'Text Formatter' to Movable Type. Once
+installed, 'Textile' will appear as a new option in the 'Text Formatting'
+drop-down list you see on the edit entry form and within the blog
+configuration.
+
+Textile greatly simplifies the task of writing, eliminating most of the
+HTML tags. For detailed information on the rules that Textile uses, please
+refer to the online documentation available from the '?' help link (which
+appears ot the right of the 'Text Formatting' label) you'll find on the
+entry edit screen.
+
+Tags made available through this plugin:
+
+  <MTTextileHeadOffset> - Used to change the head tags to match the
+  context of where they will be placed.
+
+  <MTTextileFlavor> - Used to specify the format of the HTML that is
+  produced by MT-Textile.
+
+
+===========================================================================
+
+<MTTextileHeadOffset>
+
+This tag allows you to define what the '<h1>' tag is really supposed to be
+when Textile encounters it. Ideally, your entries should use 'h1' for the
+first heading, 'h2' for the second, etc. But when your entry is output to
+your template, it may look funny to have an 'h1' tag where it should
+really be an 'h4' for example. To counter this, you can specify the number
+you wish for your headings to start with. This will number any 'h1' tags
+to the number you specify, then 'h2' tags will be renumbered to the
+starting number plus one, etc.
+
+Note that if you use a 'start' value of '2', 'h6' tags will be left as-is
+since there is no 'h7' tag.
+
+  * start
+    The number to be used for 'h1' header tags. 'h2' tags will be
+    renumbered as start+1 and so forth.
+
+Usage examples:
+
+  <MTTextileHeadOffset start="4">
+  This will cause the 'h1' tags (or markers) you place within your entry
+  to actually be 'h4' tags.
+
+
+<MTTextileFlavor>
+
+This tag lets you choose between HTML, XHTML 1 and XHTML 2 for the HTML
+that is produced.
+
+  * flavor
+    One of "html", "xhtml1", "xhtml" (currently behaves just like
+    "xhml1"), and "xhtml2".
+
+
+===========================================================================
+
+LICENSE
+
+Released under the MIT license. Please see
+    http://www.opensource.org/licenses/mit-license.php
+for details.
+
+
+===========================================================================
+
+SUPPORT
+
+If you have any questions or need assistance with this plugin, please
+visit this page on my site:
+
+  http://www.bradchoate.com/past/mttextile.php
+
+
+Brad Choate
+February 12, 2003
+
+
+===========================================================================
+
+CHANGELOG
+2.0 - Many, many fixes and improvments.
+
+- Better processing for multiple inline formatting options within the
+same line and/or same section of text.
+
+- Added 'bc.' marker for future 'blockcode' tag (emits a pre, code pair
+for HTML, XHTML1 output).
+
+- Added CSS class/id assignment to markers.
+
+- ':url' can now be appended to 'hn.', 'bq.', 'p.' to add a 'cite'
+attribute using the specified URL.
+
+- Stripped attributes from 'table' tag for Wiki-like markup.
+
+- Added '<sup>' tag to surround &reg; when produced with (r).
+
+1.1 - A number of regex updates.
+
+- If emphasis, strong, etc. shorthand appears at the start of the line,
+they are now handled properly.
+
+- Hand-entered HTML entities are preserved for non-'pre' blocks (meaning
+text that isn't in a 'pre' tag). This is different from 1.0, so please
+take note. Standalone '&' characters will still be escaped.
+
+- Addition of MTTextileAutoEncode tag. This allows you to define
+whether you want Textile to escape high-bit characters or not.
+
+- Additional TLDs were added to the URL regex.
+
+- A paragraph tag is now used for the content of the 'bq.' marker.
+
+- Nesting emphasis and strong formats should work better now.
+
+- Added CSS class support for images.
+
+- Added link support for images.
+
+- Added image dimension support for images.
+
+- Fixed a bug that was causing one of those 'internal server errors'.
+
+1.0 - Initial release
+
+
+
+
+
+
+
+Copyright (c) 2002 Brad Choate, bradchoate.com
+
+Permission is hereby granted, free of charge, to
+any person obtaining a copy of this software and
+associated documentation files (the "Software"), to
+deal in the Software without restriction, including
+without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to
+whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission
+notice shall be included in all copies or
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY
+OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.

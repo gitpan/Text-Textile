@@ -1,0 +1,34 @@
+#! /opt/perl/bin/perl
+
+use strict;
+
+BEGIN {
+  $^W = 1;  # Use warnings
+  my $start_dir = '/Users/tomi/Projects/Text-Textile';
+  chdir($start_dir) or die "Cannot chdir to $start_dir: $!";
+  @INC = 
+    (
+     '/opt/perl/lib/5.8.1/darwin-2level',
+     '/opt/perl/lib/5.8.1',
+     '/opt/perl/lib/site_perl/5.8.1/darwin-2level',
+     '/opt/perl/lib/site_perl/5.8.1',
+     '/opt/perl/lib/site_perl',
+     '/Users/tomi/Projects/Text-Textile'
+    );
+}
+
+use Module::Build;
+
+if (-e 'Build.PL' and not Module::Build->up_to_date("Build.PL", $0)) {
+   warn "Warning: Build.PL has been altered.  You may need to run 'perl Build.PL' again.
+";
+}
+
+# This should have just enough arguments to be able to bootstrap the rest.
+my $build = Module::Build->resume (
+  properties => {
+    config_dir => '/Users/tomi/Projects/Text-Textile/_build',
+  },
+);
+
+$build->dispatch;

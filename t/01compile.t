@@ -1,5 +1,8 @@
-use Test::Simple tests=>1;
+#!/usr/bin/perl -w
 
-use Text::Textile qw(textile);
+use strict;
+use warnings;
 
-ok(textile("") eq "");
+use Test::More tests=>1;
+
+use_ok('Text::Textile');
