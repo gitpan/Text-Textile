@@ -1,0 +1,11 @@
+Text::Textile
+
+Some brief notes.
+
+Text::Textile implements the Textile formatting language as outlined at
+http://www.textism.com/tools/textile/. The actual code was written by Brad
+Choate (http://www.bradchoate.com/) for his Movable Type plugin
+(http://www.bradchoate.com/past/mttextile.php). I've stolen the code, thrown
+away most of the wrapper, and added an exportable function. Not complex
+stuff.
+
