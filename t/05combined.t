@@ -15,13 +15,13 @@ a http://bare.url.here. and an email\@address.com
 
 SOURCE
 
-my $dest = textile($source)."\n";
+my $dest = textile($source);
+$dest =~ s/(^\s+|\s+$)//g;
 
 my $expected = <<EXPECTED;
 <p>start paragraph</p>
 
 <p>another paragraph</p>
-
 
 <ul>
 <li>list of things with <a href="http://www.jerakeen.org">urls</a> in</li>
@@ -30,6 +30,7 @@ my $expected = <<EXPECTED;
 
 <p>a http://bare.url.here. and an email\@address.com</p>
 EXPECTED
+$expected =~ s/(^\s+|\s+$)//g;
 
 is($dest, $expected);
 
