@@ -7,7 +7,7 @@ use Exporter;
 @Text::Textile::ISA = qw(Exporter);
 use vars qw(@EXPORT_OK $VERSION $debug);
 @EXPORT_OK = qw(textile);
-$VERSION = 2.02;
+$VERSION = 2.03;
 
 $debug = 0;
 

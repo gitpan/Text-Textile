@@ -1,3 +1,5 @@
+2.03 - No changes. Just needed to bump version # for CPAN.
+
 2.02 - Removed Encode package usage altogether until compatability
 issues can be ironed out. Modified newline translation to be more
 cross-platform friendly.
