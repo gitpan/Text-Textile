@@ -1,0 +1,60 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+MY	Makefile.PL	/^sub MY::postamble {$/;"	s
+Text::Textile	lib/Text/Textile.pm	/^package Text::Textile;$/;"	p
+_css_defaults	lib/Text/Textile.pm	/^sub _css_defaults {$/;"	s
+_halign	lib/Text/Textile.pm	/^sub _halign {$/;"	s
+_imgalign	lib/Text/Textile.pm	/^sub _imgalign {$/;"	s
+_repl	lib/Text/Textile.pm	/^sub _repl {$/;"	s
+_strip_borders	lib/Text/Textile.pm	/^sub _strip_borders {$/;"	s
+_tokenize	lib/Text/Textile.pm	/^sub _tokenize {$/;"	s
+_valign	lib/Text/Textile.pm	/^sub _valign {$/;"	s
+add_term	lib/Text/Textile.pm	/^sub add_term {$/;"	s
+apply_filters	lib/Text/Textile.pm	/^sub apply_filters {$/;"	s
+char_encoding	lib/Text/Textile.pm	/^sub char_encoding {$/;"	s
+charset	lib/Text/Textile.pm	/^sub charset {$/;"	s
+critic	Makefile.PL	/^critic:$/;"	l
+css	lib/Text/Textile.pm	/^sub css {$/;"	s
+decode_html	lib/Text/Textile.pm	/^    sub decode_html {$/;"	s
+default_macros	lib/Text/Textile.pm	/^sub default_macros {$/;"	s
+disable_encode_entities	lib/Text/Textile.pm	/^sub disable_encode_entities {$/;"	s
+disable_html	lib/Text/Textile.pm	/^sub disable_html {$/;"	s
+docroot	lib/Text/Textile.pm	/^sub docroot {$/;"	s
+encode_html	lib/Text/Textile.pm	/^    sub encode_html {$/;"	s
+encode_html_basic	lib/Text/Textile.pm	/^    sub encode_html_basic {$/;"	s
+encode_url	lib/Text/Textile.pm	/^sub encode_url {$/;"	s
+filter_param	lib/Text/Textile.pm	/^sub filter_param {$/;"	s
+filters	lib/Text/Textile.pm	/^sub filters {$/;"	s
+flavor	lib/Text/Textile.pm	/^sub flavor {$/;"	s
+format_block	lib/Text/Textile.pm	/^sub format_block {$/;"	s
+format_cite	lib/Text/Textile.pm	/^sub format_cite {$/;"	s
+format_classstyle	lib/Text/Textile.pm	/^sub format_classstyle {$/;"	s
+format_code	lib/Text/Textile.pm	/^sub format_code {$/;"	s
+format_deflist	lib/Text/Textile.pm	/^sub format_deflist {$/;"	s
+format_image	lib/Text/Textile.pm	/^sub format_image {$/;"	s
+format_inline	lib/Text/Textile.pm	/^sub format_inline {$/;"	s
+format_link	lib/Text/Textile.pm	/^sub format_link {$/;"	s
+format_list	lib/Text/Textile.pm	/^sub format_list {$/;"	s
+format_macro	lib/Text/Textile.pm	/^    sub format_macro {$/;"	s
+format_paragraph	lib/Text/Textile.pm	/^sub format_paragraph {$/;"	s
+format_span	lib/Text/Textile.pm	/^sub format_span {$/;"	s
+format_table	lib/Text/Textile.pm	/^sub format_table {$/;"	s
+format_tag	lib/Text/Textile.pm	/^sub format_tag {$/;"	s
+format_url	lib/Text/Textile.pm	/^sub format_url {$/;"	s
+get	lib/Text/Textile.pm	/^sub get {$/;"	s
+handle_quotes	lib/Text/Textile.pm	/^sub handle_quotes {$/;"	s
+head_offset	lib/Text/Textile.pm	/^sub head_offset {$/;"	s
+image_size	lib/Text/Textile.pm	/^    sub image_size {$/;"	s
+mail_encode	lib/Text/Textile.pm	/^sub mail_encode {$/;"	s
+new	lib/Text/Textile.pm	/^sub new {$/;"	s
+preserve_spaces	lib/Text/Textile.pm	/^sub preserve_spaces {$/;"	s
+process	lib/Text/Textile.pm	/^sub process {$/;"	s
+process_quotes	lib/Text/Textile.pm	/^sub process_quotes {$/;"	s
+set	lib/Text/Textile.pm	/^sub set {$/;"	s
+tags	Makefile.PL	/^tags:$/;"	l
+textile	lib/Text/Textile.pm	/^sub textile {$/;"	s
+trim_spaces	lib/Text/Textile.pm	/^sub trim_spaces {$/;"	s

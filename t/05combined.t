@@ -1,9 +1,11 @@
+#!/usr/bin/perl -Tw
+
 use warnings;
 use strict;
 use Test::More tests=>1;
 use Text::Textile qw(textile);
 
-my $source = <<SOURCE;
+my $source = <<'SOURCE';
 start paragraph
 
 another paragraph
@@ -18,7 +20,7 @@ SOURCE
 my $dest = textile($source);
 $dest =~ s/(^\s+|\s+$)//g;
 
-my $expected = <<EXPECTED;
+my $expected = <<'EXPECTED';
 <p>start paragraph</p>
 
 <p>another paragraph</p>
@@ -32,5 +34,4 @@ my $expected = <<EXPECTED;
 EXPECTED
 $expected =~ s/(^\s+|\s+$)//g;
 
-is($dest, $expected);
-
+is($dest, $expected, 'Do we match?');

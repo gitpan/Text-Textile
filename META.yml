@@ -1,0 +1,27 @@
+--- #YAML:1.0
+name:               Text-Textile
+version:            2.12
+abstract:           A humane web text generator.
+author:
+    - Brad Choate <brad@bradchoate.com>
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    Exporter:       0
+    Test::Harness:  2.5
+    Test::More:     0
+resources:
+    bugtracker:  http://github.com/bradchoate/text-textile/issues
+    repository:  http://github.com/bradchoate/text-textile/tree/master
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.54
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
