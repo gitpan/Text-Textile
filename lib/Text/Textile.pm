@@ -5,7 +5,7 @@ use warnings;
 
 use base 'Exporter';
 our @EXPORT_OK = qw(textile);
-our $VERSION = 2.12;
+our $VERSION = 2.13;
 our $debug = 0;
 
 sub new {
@@ -349,6 +349,8 @@ sub textile {
         $str = $self;
         $self = new Text::Textile;
     }
+    
+    return "" unless defined($str);
 
     # quick translator for abbreviated block names
     # to their tag
@@ -880,7 +882,7 @@ sub format_inline {
                ($imgalignre?)              # $2: optional alignment
                ($clstypadre*)              # $3: optional CSS class/id
                ($imgalignre?)              # $4: optional alignment
-               (?:\s*)                     # space between alignment/css stuff
+               (?:(?<=[^\!])\s+)?          # optional space between alignment/css stuff
                ([^\s\(\!]+)                # $5: filename
                (\s*[^\(\!]*(?:\([^\)]+\))?[^\!]*) # $6: extras (alt text)
                \!                          # closing
@@ -903,7 +905,7 @@ sub format_inline {
     $text = $self->encode_html($text);
     $text =~ s!&lt;textile#(\d+)&gt;!<textile#$1>!g;
     $text =~ s!&amp;quot;!&#34;!g;
-    $text =~ s!&amp;(([a-z]+|#\d+);)!&$1!g;
+    $text =~ s!&amp;(([a-zA-Z0-9]+|#\d+|#x[0-9A-Fa-f]+);)!&$1!g;
     $text =~ s!&quot;!"!g; #"
 
     # These create markup with entities. Do first and 'save' result for later:
@@ -1002,28 +1004,7 @@ sub format_inline {
         $text =~ s/(?<!\s)\ \ (?!=\s)/&#8195;/g;
     }
 
-    my $redo = $text =~ m/[\*_\?\-\+\^\~]/;
-    my $last = $text;
-    while ($redo) {
-        # simple replacements...
-        $redo = 0;
-        foreach my $tag (@qtags) {
-            my ($f, $r, $qf, $cls) = @{$tag};
-            if ($text =~ s/(?:^|(?<=[\s>'"])|([{[])) # "' $1 - pre
-                           $qf                       #
-                           (?:($clstyre*))?          # $2 - attributes
-                           ([^$cls\s].*?)            # $3 - content
-                           (?<=\S)$qf                #
-                           (?:$|([\]}])|(?=$punct{1,2}|\s)) # $4 - post
-                          /$self->format_tag(tag => $r, marker => $f, pre => $1, text => $3, clsty => $2, post => $4)/gemx) {
-                    $redo ||= $last ne $text;
-                    $last = $text;
-            }
-        }
-    }
-
-    # superscript is an even simpler replacement...
-    $text =~ s/(?<!\^)\^(?!\^)(.+?)(?<!\^)\^(?!\^)/<sup>$1<\/sup>/g;
+    $text = $self->format_phrase_modifiers( text => $text );
 
     # ABC(Aye Bee Cee) -> acronym
     $text =~ s{\b([A-Z][A-Za-z0-9]*?[A-Z0-9]+?)\b(?:[(]([^)]*)[)])}
@@ -1063,6 +1044,39 @@ sub format_inline {
 
     $text;
 }
+
+sub format_phrase_modifiers {
+    my $self = shift;
+    my (%args) = @_;
+    my $text = defined $args{text} ? $args{text} : '';
+
+    my $redo = $text =~ m/[\*_\?\-\+\^\~]/;
+    my $last = $text;
+    while ($redo) {
+        # simple replacements...
+        $redo = 0;
+        foreach my $tag (@qtags) {
+            my ($f, $r, $qf, $cls) = @{$tag};
+            if ($text =~ s/(?:^|(?<=[\s>'"])|([{[])) # "' $1 - pre
+                           $qf                       #
+                           (?:($clstyre*))?          # $2 - attributes
+                           ([^$cls\s].*?)            # $3 - content
+                           (?<=\S)$qf                #
+                           (?:$|([\]}])|(?=$punct{1,2}|\s)) # $4 - post
+                          /$self->format_tag(tag => $r, marker => $f, pre => $1, text => $3, clsty => $2, post => $4)/gemx) {
+                    $redo ||= $last ne $text;
+                    $last = $text;
+            }
+        }
+    }
+
+    # superscript is an even simpler replacement...
+    $text =~ s/(?<!\^)\^(?!\^)(.+?)(?<!\^)\^(?!\^)/<sup>$1<\/sup>/g;
+
+    return $text;
+
+}
+
 }
 
 {
@@ -1554,8 +1568,8 @@ sub format_image {
         }
         if (!$pctw && !$pcth) {
             ($w,$h) = ($extra =~ m/(^|\s)(\d+|\*)x(\d+|\*)(\s|$)/)[1,2];
-            $w = '' if $w eq '*';
-            $h = '' if $h eq '*';
+            $w = '' if $w && $w eq '*';
+            $h = '' if $h && $h eq '*';
             if (!$w) {
                 ($w) = ($extra =~ m/(^|[,\s])(\d+)w([\s,]|$)/)[1];
             }

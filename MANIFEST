@@ -1,10 +1,10 @@
 ARTISTIC
 Changes
-lib/Text/Textile.pm
-Makefile.PL
 MANIFEST
-perlcriticrc
-README
+Makefile.PL
+README.textile
+bin/textile
+lib/Text/Textile.pm
 t/01compile.t
 t/02paragraph.t
 t/03url.t
@@ -12,6 +12,7 @@ t/04list.t
 t/05combined.t
 t/06disable_encode_entities.t
 t/07code.t
+t/08bin_textile.t
 t/pod.t
-tags
-META.yml                                 Module meta-data (added by MakeMaker)
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)
